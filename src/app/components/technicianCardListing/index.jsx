@@ -4,7 +4,7 @@ import TechnicianCard from "../technicianCard";
 import { api, useDynamicQuery } from "../../lib/axios";
 import CustomPagination from "../pagination";
 
-const TechnicianCardListing = () => {
+const TechnicianCardListing = ({service}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [technicians, setTechnicians] = useState([]);
 //   const {data,error,isLoading}=useDynamicQuery(["users",])
@@ -47,9 +47,9 @@ const TechnicianCardListing = () => {
 };
 
 export default TechnicianCardListing;
-const getData = async ({ page, long, lat }) => {
+const getData = async ({ page, long, lat,service }) => {
   const res = await api.get(
-    `/technician/all?page=${page}&long=${long}&lat=${lat}`
+    `/technician/all?page=${page}&long=${long}&lat=${lat}&service=${service}`
   );
   return res.data;
 };
