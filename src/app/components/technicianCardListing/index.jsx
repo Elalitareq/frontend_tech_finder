@@ -17,7 +17,6 @@ const TechnicianCardListing = () => {
         getData({ lat: latitude, long: longitude, page: currentPage }).then(
           (res) => {
             setTechnicians(res);
-            console.log(res)
           }
         );
       },
