@@ -25,7 +25,7 @@ const TechnicianCardListing = ({service}) => {
         console.log("Error getting user's coordinates:", error);
       }
     );
-  }, [currentPage]);
+  }, [currentPage,service]);
 
   return (
     <>
@@ -49,7 +49,6 @@ const TechnicianCardListing = ({service}) => {
 
 export default TechnicianCardListing;
 const getData = async ({ page, long, lat,service }) => {
-    console.log(service)
   const res = await api.get(
     `/technician/all?page=${page}&long=${long}&lat=${lat}&service=${service}`
   );
