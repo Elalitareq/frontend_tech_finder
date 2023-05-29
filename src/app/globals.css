@@ -3,25 +3,127 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #16b8d1; /* Blue */
+  --primary-color-light: #30d8f1; /* Light Blue */
+  --primary-color-dark: #dae6f3; /* Dark Blue */
+
+  --secondary-color: #a8afb6; /* Gray */
+  --secondary-color-light: #406380; /* Light Gray */
+  --secondary-color-dark: #275477; /* Dark Gray */
+  --secondary-color-dark2: #487395; /* Dark Gray */
+
+  --accent-color: #ff5722; /* Orange */
+  --accent-color-light: #ff844c; /* Light Orange */
+  --accent-color-dark: #b83a00; /* Dark Orange */
+
+  --background-color: #f8f9fa; /* Light Gray */
+  --background-color-primary: #e3ecf5; /* Light Gray */
+  --text-color: #f8f9fa; /* Dark Gray */
+  --light-grey: #d6d6d6;
+  --dark-grey: rgb(75 85 99);
+  font-size: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
+}
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: var(--light-grey)!important;
+  color: var(--dark-grey)!important;
+}
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+  color: white !important;
+}
+.css-1iyq7zh-MuiDataGrid-columnHeaders * {
+  color: var(--dark-grey) !important;
+}
+.css-1kwdphh-MuiDataGrid-virtualScrollerContent * {
+  color: var(--dark-grey) !important;
+}
+.css-1agssdt-MuiDataGrid-root {
+  border: none !important;
+}
+.css-128fb87-MuiDataGrid-toolbarContainer * {
+  color: var(--text-color) !important;
+}
+.css-128fb87-MuiDataGrid-toolbarContainer {
+  background-color: var(--dark-grey) !important;
+}
+.uiTablePagination-root * {
+  font-weight: 600 !important;
+  color: var(--dark-grey) !important;
+}
+.MuiDataGrid-footerContainer {
+  border: none !important;
+  background-color: var(--dark-grey) !important;
+}
+.css-204u17-MuiDataGrid-main {
+  border-left: 5px solid var(--dark-grey);
+  border-right: 5px solid var(--dark-grey);
+}
+.css-gl260s-MuiDataGrid-columnHeadersInner {
+  background-color: var(--light-grey);
+  color: black !important;
+}
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar * {
+  color: var(--light-grey) !important;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: var(--dark-grey);
+  background: #eee; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #363d45,
+    #363d45
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to right,
+    #363d45,
+    #363d45
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+/* For modern WebKit browsers */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+/* For Firefox */
+/* Optional: You may skip this if you don't need to support Firefox */
+/* For Firefox 64+ */
+.scrollbar-w-5 {
+  scrollbar-width: thin;
+}
+
+/* For Firefox 63 and below */
+.scrollbar-w-5 {
+  scrollbar-width: 10px;
+}
+
+/* For Internet Explorer and Edge */
+/* Optional: You may skip this if you don't need to support IE and Edge */
+/* For IE and Edge */
+.scrollbar-w-5 {
+  -ms-overflow-style: scrollbar;
+}
+
+/* Set the custom property value for the scrollbar width */
+:root {
+  --scrollbar-width: 10px;
+}
+@media (max-width: 1024px) {
+  .hero-image {
+    width: 4rem;
+  }
+  @media (max-width: 756) {
+    .hero-image {
+      width: 6rem;
+    }
+  }
+  @media (max-width: 467) {
+    .hero-image {
+      width: 13vw;
+      height: auto;
+    }
+  }
 }

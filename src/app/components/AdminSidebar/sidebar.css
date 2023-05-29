@@ -1,0 +1,54 @@
+
+  
+  .cont {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .sidebar svg {
+    width: 40px;
+  }
+  .sidebar {
+    display: inline-flex;
+    width:100%;
+    padding: 0 10px;
+    flex-direction: column;
+    background-color: #141414;
+    overflow: hidden;
+    color: #f9f9f9;
+  }
+  
+  .item {
+    margin: 10px 0;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+  
+  .item:hover {
+    background-color: #292929;
+  }
+  
+  .item:active {
+    background-color: #0052CC;
+  }
+  
+  .line {
+    margin: 0 10px; 
+    border-radius: 3px;
+    border: 1px solid grey;
+  }
+  
+  .bottom {
+    margin-top: auto;
+    margin-bottom: 10px !important
+  }
+  
+  .top {
+    margin-top: 10px !important;
+  }
+  .css-12u49z-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell{
+    color:white!important;
+  }

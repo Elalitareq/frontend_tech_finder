@@ -1,0 +1,25 @@
+.loginButton{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 10px 20px;
+    border-radius: 9999px;
+    margin-left: 10px;
+    /* height: 100%; */
+  }
+  .loginButton:hover{
+    cursor: pointer;
+    background-color: var(--primary-color-light);
+  transition: all .3s ease-in-out;
+  }
+  
+
+ 
+  
+
+
+
+  
+  .formContainer {
+    padding-top: 100px;
+  }
+ 

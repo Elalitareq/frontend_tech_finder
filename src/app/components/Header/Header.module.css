@@ -1,0 +1,128 @@
+.header {
+  background-color: var(--text-color);
+  color: white;
+  padding: 0 26px;
+  position: fixed;
+  left: 1%;
+  top: 10px;
+  width: 98%;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accountNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: var(--primary-color);
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: -1rem; */
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.menu li {
+  padding: 18px 10px;
+  font-size: 20px;
+}
+
+
+.menu li a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.4s ease;
+  padding: 0 10px;
+}
+.menu li a:hover {
+  color: var(--primary-color-light);
+  transition: color 0.4s ease;
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  /* .nav {
+position: relative;  
+} */
+  .menuToggle {
+    display: flex;
+  } 
+  .accountNav{
+    display: none;
+  }
+
+  .menu {
+    flex-direction: column;
+    padding: 20px;
+    background: var(--secondary-color);
+    position: absolute;
+    transform: translateX(-150%);
+    /* opacity: 0; */
+    top: 100%;
+    left: 0;
+    height: calc(100vh - 60px);
+    width: 100%;
+    transition: opacity 0.4s ease, transform 0.4s ease-in;
+  }
+
+  .open .menu {
+    transform: translateX(0);
+    /* opacity: 1; */
+    justify-content: flex-start;
+    transition: opacity 0.4s ease, transform 0.4s ease-in;
+  }
+
+  .menu li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+.separate{
+  height:35px;
+  width:2px;
+  background-color: #33333364;
+}
