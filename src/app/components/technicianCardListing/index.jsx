@@ -14,9 +14,10 @@ const TechnicianCardListing = ({service}) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        getData({ lat: latitude, long: longitude, page: currentPage }).then(
+        getData({ lat: latitude, long: longitude, page: currentPage,service }).then(
           (res) => {
             setTechnicians(res);
+            console.log(res);
           }
         );
       },
@@ -48,6 +49,7 @@ const TechnicianCardListing = ({service}) => {
 
 export default TechnicianCardListing;
 const getData = async ({ page, long, lat,service }) => {
+    console.log(service)
   const res = await api.get(
     `/technician/all?page=${page}&long=${long}&lat=${lat}&service=${service}`
   );
