@@ -1,7 +1,7 @@
 
 import laptopSVG from "../../assets/vector/laptop.svg";
 import laptop from "../../assets/vector/disassembled/laptop.svg";
-import tablet from "../../assets/vector/disassembled/tablet.svg";
+import tablet from "../../assets/vector/disassembled/tablet1.svg";
 import desktop from "../../assets/vector/disassembled/case.svg";
 import screen from "../../assets/vector/disassembled/screen.svg";
 import Card from "../servicesCard";
