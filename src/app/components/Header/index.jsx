@@ -25,11 +25,6 @@ const linksArray = [
     extraDetails: "Extra details for About",
   },
   {
-    label: "Contact",
-    href: "/contact",
-    extraDetails: "Extra details for Contact",
-  },
-  {
     label: "Market Place",
     href: "/products",
     extraDetails: "Extra details for Contact",
