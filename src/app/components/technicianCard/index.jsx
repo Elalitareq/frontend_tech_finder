@@ -1,12 +1,13 @@
 import React from "react";
 import "./something.css";
-import { Facebook, Instagram, Linkedin, Twitter } from "react-feather";
+// import { Facebook, Instagram, Linkedin, Twitter } from "react-feather";
 import { socialArray } from "./socialIcons";
-const TechnicianCard = ({ data }) => {
+import Link from "next/link";
+const TechnicianCard = ({ data,service }) => {
   return (
     <>
       <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400">
-        <a className="hover:cursor-pointer">
+        <Link href={`/services/${service}/${data._id}`} className="hover:cursor-pointer">
           <div className="h-[70px] bg-gray-700 flex items-center justify-around hover:bg-gray-300 transition-colors hover:transition-colors duration-300 group">
             <div className="Usericon rounded-md  bg-dark-grey overflow-hidden">
               <svg
@@ -22,10 +23,12 @@ const TechnicianCard = ({ data }) => {
               </svg>
             </div>
             <div>
-              <p className="text-md font-bold text-text group-hover:text-gray-600 transition-colors duration-300" >
+              <p className="text-md font-bold text-text group-hover:text-gray-600 transition-colors duration-300">
                 {data.companyName.toUpperCase()}
               </p>
-              <p className="text-sm font-thin text-text group-hover:text-gray-600 transition-colors duration-300">{data.title}</p>
+              <p className="text-sm font-thin text-text group-hover:text-gray-600 transition-colors duration-300">
+                {data.title}
+              </p>
             </div>
             <span className="h-8 w-[2px] bg-text group-hover:bg-gray-600"></span>
             <div className="flex flex-col text-text items-center group-hover:text-gray-600 transition-colors duration-300">
@@ -33,7 +36,7 @@ const TechnicianCard = ({ data }) => {
               <span>km</span>
             </div>
           </div>
-        </a>
+        </Link>
 
         <div className="Description"></div>
 

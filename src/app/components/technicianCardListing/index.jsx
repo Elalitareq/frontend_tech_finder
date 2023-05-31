@@ -40,7 +40,7 @@ const TechnicianCardListing = ({service}) => {
     
         {technicians.technicians &&
           technicians.technicians.map((technician, index) => {
-            return <TechnicianCard data={technician} key={index} />;
+            return <TechnicianCard data={technician} key={index} service={service}/>;
           })}
       </div>
     </>

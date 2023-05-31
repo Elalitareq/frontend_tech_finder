@@ -5,8 +5,8 @@
     gap: 5px;
     color: var(--primary-color-light);
     font-weight: 500;
-    letter-spacing: 4px;
-    font-size: 1.3rem;
+    letter-spacing: 3px;
+    font-size: 1.2rem;
   }
 
 .profileDropdownContent{
