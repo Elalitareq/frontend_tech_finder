@@ -21,8 +21,8 @@ export default function Home() {
   }, []);
   return (
     <div className="min-h-[calc(100vh-200px)] relative py-4">
-      <div className="   md:flex md:flex-row md:justify-between md:items-center ">
-        <div className="     w-full md:w-[50%] flex flex-col items-start">
+      <div className="   lg:flex lg:flex-row lg:justify-between lg:items-center ">
+        <div className="     w-full lg:w-[50%] flex flex-col items-start">
           <h1 className=" text-[13vw] text-primary   md:text-6xl lg:text-8xl  font-extrabold">
             PC OR <span className="whitespace-nowrap">LAPTOP</span>
             <span className="text-accent"> ISSUES</span>?
@@ -40,24 +40,30 @@ export default function Home() {
         <Image
           placeholder="blur"
           src={heroImage}
-          className="w-full  2xl:w-[40%]"
+          className="w-full  lg:w-[40%]"
           blurDataURL="true"
           alt="hero"
         />
       </div>
-      <div className="flex flex-row min-h-screen">
-        {/* {JSON.stringify(data)} */}
-        {data&&data.technicians.map((technician, index) => {
-          return <TechnicianCard data={technician} key={index} />;
-        })}
+      <div className="flex flex-row  max-sm:justify-center gap-[calc(100%-500px)]  min-[750px]:gap-[calc(50%-375px)] lg:gap-[calc(33.33%-334px)] 2xl:gap-[calc(20%-300px)] flex-wrap ">
+        {data &&
+          data.technicians.map((technician, index) => {
+            return (
+              <TechnicianCard
+                data={technician}
+                key={index}
+                className="w-full md:w-1/3"
+              />
+            );
+          })}
       </div>
     </div>
   );
 }
 async function getClosestFourTechnicians({ long, lat }) {
   const res = await api.get(
-    `/technician/all?limit=4&page=1&long=${long}&lat=${lat}`
+    `/technician/all?limit=6&page=1&long=${long}&lat=${lat}`
   );
-    console.log(res.data)
+  console.log(res.data);
   return res.data;
 }

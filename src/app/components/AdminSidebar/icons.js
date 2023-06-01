@@ -60,10 +60,38 @@ export const icons = {
       ></path>
     </svg>
   ),
+  technician: (
+    <svg
+      id="Icons"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      xmlSpace="preserve"
+      className="w-[30px]"
+    >
+      <style>
+        {
+          ".st0{stroke-linecap:round}.st0,.st1{fill:none;stroke:#fff;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10}"
+        }
+      </style>
+      <path
+        className="st1"
+        d="M28.8 20.2c-1.1.2-2 0-2.4-.7-.4-.7-.1-1.7.6-2.5-.9-.9-1.9-1.5-3.1-1.8-.3 1-1 1.8-1.8 1.8s-1.5-.7-1.8-1.8c-1.2.3-2.3.9-3.1 1.8.7.8 1 1.8.6 2.5s-1.4.9-2.4.7c-.3.6-.4 1.2-.4 1.8s.1 1.2.2 1.8c1.1-.2 2 0 2.4.7.4.7.1 1.7-.6 2.5.9.9 1.9 1.5 3.1 1.8.3-1 1-1.8 1.8-1.8s1.5.7 1.8 1.8c1.2-.3 2.3-.9 3.1-1.8-.7-.8-1-1.8-.6-2.5s1.4-.9 2.4-.7c.2-.6.2-1.2.2-1.8s.1-1.2 0-1.8z"
+      />
+      <circle className="st1" cx={22} cy={22} r={2} />
+      <path className="st0" d="M5 12L21 12" />
+      <path
+        className="st0"
+        d="M10.5 8.1L9.3 3.9c2.3-1.2 5.1-1.2 7.4 0l-1.2 4.2M16.5 4.9c2 1.2 3.3 3.4 3.3 5.9V12M6.2 12v-1.2c0-2.5 1.3-4.7 3.3-5.9M8 12v2c0 2.1.9 4 2.5 5 0 2.1-1.3 3.9-3.2 4.4-2.2.6-3.8 2.6-4.3 5 0 .3.2.6.5.6H13"
+      />
+    </svg>
+  ),
   logout: (
-    <svg 
-    className="w-[30px] text-primary"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="signout">
+    <svg
+      className="w-[30px] text-primary"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      id="signout"
+    >
       <path
         fill="#f7f7f7"
         d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"

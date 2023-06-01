@@ -23,6 +23,12 @@ const TechnicianCardListing = ({service}) => {
       },
       (error) => {
         console.log("Error getting user's coordinates:", error);
+        getData({ page: currentPage,service }).then(
+          (res) => {
+            setTechnicians(res);
+            console.log(res);
+          }
+        );
       }
     );
   }, [currentPage,service]);

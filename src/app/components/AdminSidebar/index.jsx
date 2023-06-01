@@ -24,27 +24,7 @@ const Sidebar = () => {
         <CustomLink label="Home" icon="home" href="/admin" active={checkActive("/admin")} />
         <div className="line"></div>
         <CustomLink label="Users" icon="users" href="/admin/users"  active={checkActive("/admin/users")} />
-        <Link
-          href="/admin/users"
-          className="text-l flex items-center gap-[10px] mx-[8px] my-[10px] py-[8px] px-[10px] rounded-md  transition-colors duration-300 hover:bg-accent-light  text-white"
-        >
-          {icons.users}
-          Users
-        </Link>
-        <Link
-          href="/admin/users"
-          className="text-l flex items-center gap-[10px] mx-[8px] my-[10px] py-[8px] px-[10px] rounded-md  transition-colors duration-300 hover:bg-accent-light  text-white"
-        >
-          {icons.users}
-          Users
-        </Link>
-        <Link
-          href="/admin/users"
-          className="text-l flex items-center gap-[10px] mx-[8px] my-[10px] py-[8px] px-[10px] rounded-md  transition-colors duration-300 hover:bg-accent-light  text-white"
-        >
-          {icons.users}
-          Users
-        </Link>
+        <CustomLink label="Technicians" icon="technician" href="/admin/technicians"  active={checkActive("/admin/technicians")} />
         <div className="line"></div>
         <Link
           href="/admin/users"
