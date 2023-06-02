@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SignUpStyle from "./SignUp.module.css";
 import { api } from "../../../lib/axios";
+import { Toaster, toast } from "react-hot-toast";
 
 const SignUpModal = () => {
   const [email, setEmail] = useState("");
@@ -77,7 +78,9 @@ const SignUpModal = () => {
       });
 
       if (response.status === 201) {
+        toast.success("Successfully registered you can now login")
         handleCloseModal();
+
       } else {
         console.error(response.data);
       }
@@ -297,6 +300,7 @@ const SignUpModal = () => {
           </form>
         </div>
       )}
+      <Toaster/>
     </>
   );
 };
