@@ -20,7 +20,7 @@ export default function Home() {
     });
   }, []);
   return (
-    <div className="min-h-[calc(100vh-200px)] relative py-4">
+    <div className="min-h-[calc(100vh-200px)] relative py-4 ">
       <div className="   lg:flex lg:flex-row lg:justify-between lg:items-center ">
         <div className="     w-full lg:w-[50%] flex flex-col items-start">
           <h1 className=" text-[13vw] text-primary   md:text-6xl lg:text-8xl  font-extrabold">
@@ -45,7 +45,8 @@ export default function Home() {
           alt="hero"
         />
       </div>
-      <div className="flex flex-row  max-sm:justify-center gap-[calc(100%-500px)]  min-[750px]:gap-[calc(50%-375px)] lg:gap-[calc(33.33%-334px)] 2xl:gap-[calc(20%-300px)] flex-wrap ">
+        <h2 className="text-2xl text-text text-center my-12">Technicians that are close to you</h2>
+      <div className="flex flex-row mx-auto justify-between flex-wrap max-w-[1200px]">
         {data &&
           data.technicians.map((technician, index) => {
             return (
@@ -62,7 +63,7 @@ export default function Home() {
 }
 async function getClosestFourTechnicians({ long, lat }) {
   const res = await api.get(
-    `/technician/all?limit=6&page=1&long=${long}&lat=${lat}`
+    `/technician/all?limit=4&page=1&long=${long}&lat=${lat}`
   );
   console.log(res.data);
   return res.data;

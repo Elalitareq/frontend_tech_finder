@@ -42,7 +42,7 @@ const TechnicianCardListing = ({service}) => {
         variant="text"
         className="mb-4 justify-center md:justify-end flex text-text"
       />
-      <div className="flex flex-row  max-sm:justify-center gap-[calc(100%-500px)]  min-[750px]:gap-[calc(50%-375px)] lg:gap-[calc(33.33%-334px)] 2xl:gap-[calc(20%-300px)] flex-wrap">
+      <div className="flex flex-row max-w-[1200px] max-sm:justify-center md:justify-between flex-wrap mx-auto">
     
         {technicians.technicians &&
           technicians.technicians.map((technician, index) => {

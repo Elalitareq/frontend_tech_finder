@@ -48,7 +48,7 @@ const Header = () => {
   };
   const { data: session, status } = useSession();
   return (
-    <header className="fixed z-10 w-full   px-10 py-6 flex justify-between bg-secondary-dark md:bg-transparent">
+    <header className="fixed z-10 w-full   px-4 md:px-20 py-6 flex justify-between bg-secondary-dark md:bg-transparent">
       <Image
         loading="eager"
         priority={true}
@@ -73,7 +73,7 @@ const Header = () => {
           {linksArray.map((link) => {
             return (
               <li key={link.href}>
-                <Link className={`tracking-wild ${checkActive(pathname,link.href)?"text-primary":"text-text"}`} href={link.href}>
+                <Link className={`tracking-wild ${checkActive(pathname,link.href)?"text-primary":"text-text"}`} href={link.href} onClick={()=>setMenuOpen(false)}>
                   {link.label}
                 </Link>
               </li>
@@ -82,8 +82,15 @@ const Header = () => {
 
           {status === "authenticated" && session.user.role === "admin" && (
             <li>
-              <Link href={"/admin"} className={`tracking-wild ${checkActive(pathname,"/admin")?"text-primary":"text-text"}`}>
+              <Link href={"/admin"} className={`tracking-wild ${checkActive(pathname,"/admin")?"text-primary":"text-text"}`} onClick={()=>setMenuOpen(false)}>
                 Admin Panel
+              </Link>
+            </li>
+          )}
+          {status === "authenticated" && session.user.role === "technician" && (
+            <li>
+              <Link href={"/technician"} className={`tracking-wild ${checkActive(pathname,"/technician")?"text-primary":"text-text"}`} onClick={()=>setMenuOpen(false)}>
+                Technician Panel
               </Link>
             </li>
           )}

@@ -3,6 +3,7 @@ import "./something.css";
 // import { Facebook, Instagram, Linkedin, Twitter } from "react-feather";
 import { socialArray } from "./socialIcons";
 import Link from "next/link";
+import Image from "next/image";
 const TechnicianCard = ({ data,service }) => {
   return (
     <>
@@ -38,7 +39,8 @@ const TechnicianCard = ({ data,service }) => {
           </div>
         </Link>
 
-        <div className="Description"></div>
+        <Image src={data.image} className="Description" width="240"
+    height="180"/>
 
         <div className="social-media">
           {data.social.slice(0, 4).map((platform, i) => {

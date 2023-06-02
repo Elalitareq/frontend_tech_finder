@@ -1,9 +1,12 @@
-import { Switch } from '@mui/material';
-import React from 'react';
+import { Switch } from "@mui/material";
+import { useEffect ,useState} from "react";
 
-const ReusableTable = ({ columns, data, handleSwitchChange,isLoading }) => {
+const ReusableTable = ({ columns, data, handleSwitchChange, isLoading }) => {
+  useEffect(()=>{
+
+  },[data])
   return (
-    <table className="w-full border-collapse bg-gray-500 h-full">
+    <table className="w-full border-collapse bg-gray-500  table-auto overflow-scroll">
       <thead>
         <tr className="bg-gray-200">
           {columns.map((column, index) => (
@@ -16,32 +19,52 @@ const ReusableTable = ({ columns, data, handleSwitchChange,isLoading }) => {
           ))}
         </tr>
       </thead>
-      <tbody className='h-full'>
-        {isLoading?<>Loading...</>:data.map((row, rowIndex) => (
-          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>
-            {columns.map((column, columnIndex) => (
-              <td
-                key={columnIndex}
-                className="py-2 px-4 border-b"
-              >
-                {column.type === 'boolean' ? (
-                  <Switch
-                    checked={row[column.accessor]}
-                    onChange={e =>
-                      handleSwitchChange(row._id, e.target.value)
-
-                    }
-                  />
-                ) : (
-                  row[column.accessor]
-                )}
-              </td>
-            ))}
-          </tr>
-        ))}
+      <tbody className="max-h-[500px]">
+        {isLoading ? (
+          <tr><td>Loading...</td></tr>
+        ) : (
+          data.map((row, rowIndex) => (
+            <tr
+              key={rowIndex}
+              className={rowIndex % 2 === 0 ? "bg-gray-500 text-text" : "  bg-gray-300"}
+            >
+              {columns.map((column, columnIndex) => (
+                <td key={columnIndex} className="py-2 px-4 border-b">
+                  {column.type === "boolean" ? (
+                   <CustomSwitch
+                   id={row._id}
+                   checked={row[column.accessor]}
+                   handleSwitchChange={handleSwitchChange}
+                   />
+                  ) : (
+                    row[column.accessor]
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))
+        )}
       </tbody>
     </table>
   );
 };
 
 export default ReusableTable;
+
+const CustomSwitch=({checked,handleSwitchChange,id})=>{
+  const [sure,setSure]=useState(checked)
+  useEffect(()=>{
+    setSure(checked)
+  },[checked]
+
+  )
+  return(
+    <Switch
+   checked={sure}
+   onChange={(e,value) => {
+    setSure(value)
+    handleSwitchChange(id, value);
+  }}
+  />
+  )
+}

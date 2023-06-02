@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "^1.7.15",
     "@mui/material": "^5.13.2",
     "@mui/x-data-grid": "^6.5.0",
     "@next-auth/mongodb-adapter": "^1.1.3",

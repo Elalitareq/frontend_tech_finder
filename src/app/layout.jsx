@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
       <body>
         <SessionProvider refetchOnWindowFocus={false}>
           <Header />
-          <main className="pt-32  mx-8  " >
+          <main className="pt-32  mx-4 md:mx-20  " >
             {children}
           </main>
         </SessionProvider>
