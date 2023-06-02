@@ -14,18 +14,16 @@ const Technician = async ({ params }) => {
   ];
   const technician = await getTechnicianData(params.techId);
   return (
-    <div className="w-full md:w-[800px] bg-gray-600 min-h-[700px] mx-auto rounded-lg overflow-hidden">
-      <div className="w-full p-4 bg-gray-300">
-        <h1 className="text-3xl text-gray-600 text-center font-semibold">
-          {technician.companyName}
-        </h1>
-      </div>
+    <div className="w-full md:w-[800px]  min-h-[700px] mx-auto ">
+      <h1 className="text-3xl text-gray-200 font-bold mb-6 pb-2 border-b-4 text-center border-gray-200">
+        {technician.companyName}
+      </h1>
       <div className="flex p-4  flex-col md:flex-row md:justify-between">
         <Image
           src={technician.image}
-          className="w-full md:w-[300px] h-auto rounded-lg border"
-          width={300}
-          height={300}
+          className="w-full md:w-[350px] h-auto rounded-lg border"
+          width={350}
+          height={350}
           alt={technician.companyName}
         />
         <div className="w-full md:w-1/2 px-0 md:px-4  text-gray-300">
@@ -33,7 +31,9 @@ const Technician = async ({ params }) => {
           <h4 className="text-lg my-4">Email: {technician.workEmail}</h4>
           <h4 className="text-lg my-4">Address: {technician.address}</h4>
           <h4 className="text-lg my-4">
-            Map Location: {technician.location.lat} , {technician.location.lat}
+            
+            Location:
+            <a href={`https://www.google.com/maps/search/?api=1&query=${technician.location.lat},${technician.location.lat}`} target="_blank"className="text-primary cursor-pointer"> Map </a>
           </h4>
           <h4 className="text-lg my-4">Tel: {technician.tel}</h4>
           <div className="flex gap-8 items-center my-4">
@@ -101,7 +101,11 @@ const Technician = async ({ params }) => {
           </div>
         ))}
       </div>
-      <div className="p-4 text-right md:text-center"><button className="text-gray-100 bg-primary px-4 py-3 rounded-full hover:bg-primary-light cursor-pointer">Book Now</button></div>
+      <div className="p-4 text-right md:text-center">
+        <button className="text-gray-100 bg-primary px-4 py-3 rounded-full hover:bg-primary-light cursor-pointer">
+          Book Now
+        </button>
+      </div>
     </div>
   );
 };
