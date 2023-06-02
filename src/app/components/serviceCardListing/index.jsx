@@ -40,7 +40,7 @@ const ServiceCardListing = () => {
 
   return (
     <>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  content-center  gap-5 justify-items-center justify-center mx-auto mt-32">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  content-center  gap-5 justify-items-center justify-center mx-auto mt-32 mb-12">
         {services.map((data, index) => {
           return (
             <div key={index}>

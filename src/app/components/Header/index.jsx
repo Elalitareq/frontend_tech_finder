@@ -62,9 +62,9 @@ const Header = () => {
   const { data: session, status } = useSession();
   return (
     <header
-    className={`fixed z-10 w-full md:w-[calc(100%-8rem)] px-4 rounded md:rounded-lg md:mx-16 md:px-4 py-6 md:py-2 md:top-4 flex justify-between transition-color duration-300 ${scrollPosition > 100 ? "bg-gray-900" : "bg-secondary-dark md:bg-transparent"}`}
+    className={`fixed z-10 w-full md:w-[calc(100%-8rem)] px-4 rounded md:rounded-lg md:mx-16 md:px-4 py-6 md:py-2 md:top-4 flex justify-between `}
   >
-  
+  <div class={` transition duration-500 absolute inset-0 h-full w-full bg-gradient-to-r from-gray-800 to-gray-700 z-10  ${scrollPosition > 150 ? "opacity-100" : "opacity-0"}`}></div>
       <Image
         loading="eager"
         priority={true}
@@ -72,9 +72,10 @@ const Header = () => {
         alt="logo"
         width={200}
         height={60}
+        className="z-20"
       />
       <nav
-        className={`md:flex md:items-center md:justify-center   ${
+        className={`md:flex md:items-center md:justify-center z-20   ${
           menuOpen ? headerStyle.open : ""
         }`}
       >
@@ -134,7 +135,7 @@ const Header = () => {
           )}
         </ul>
       </nav>
-      <div className={headerStyle.accountNav}>
+      <div className={`z-20 ${headerStyle.accountNav}`}>
         {status === "unauthenticated" && (
           <>
             <SignUpModal />
