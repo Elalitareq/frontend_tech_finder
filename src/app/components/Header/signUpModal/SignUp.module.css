@@ -39,7 +39,7 @@
   margin-bottom: 20px;
   font-size: 2rem;
   text-align: center;
-  color: var(--primary-color);
+  color: var(--accent-color);
   font-weight: 800;
 }
 
@@ -56,8 +56,9 @@
 
 .modal input[type="email"],
 .modal input[type="text"],
+.modal input[type="date"],
 .modal input[type="password"] {
-  color:var(--text-color);
+  color:#000;
   width: 100%;
   padding: 10px;
   border: 1px solid var(--secondary-color);
@@ -65,31 +66,17 @@
 }
 
 .modal input[type="email"]:focus,
+.modal input[type="date"]:focus,
 .modal input[type="text"]:focus,
 .modal input[type="password"]:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--accent-color);
 }
 
-.signUpNavButton{
-  background-color: var(--accent-color);
-  color: var(--background-color);
-  padding: 10px 20px;
-  border-radius: 9999px;
-  /* height: 100%; */
-  margin-right: 10px;
-  
-}
-.signUpNavButton:hover{
-  cursor: pointer;
-  background-color: var(--accent-color-light);
-
-  transition: all .3s ease-in-out;
-}
 
 .submitButton {
   padding: 10px 15px;
-  background-color: var(--primary-color)!important;
+  background-color: var(--accent-color)!important;
   color: var(--background-color);
   border: none;
   border-radius: 6px;
@@ -98,7 +85,7 @@
 }
 
 .submitButton:hover {
-  background-color: var(--primary-color-dark)!important;
+  background-color: var(--accent-color-dark)!important;
   transition: background-color .4 ease;
 }
 

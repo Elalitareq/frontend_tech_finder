@@ -22,17 +22,17 @@ export default function Home() {
   return (
     <div className="min-h-[calc(100vh-200px)] relative py-4 ">
       <div className="   lg:flex lg:flex-row lg:justify-between lg:items-center ">
-        <div className="     w-full lg:w-[50%] flex flex-col items-start">
-          <h1 className=" text-[13vw] text-primary   md:text-6xl lg:text-8xl  font-extrabold">
-            PC OR <span className="whitespace-nowrap">LAPTOP</span>
+        <div className="     w-full lg:w-[50%] flex flex-col  items-start">
+          <h1 className=" text-[12vw] text-primary   md:text-6xl lg:text-6xl  font-extrabold">
+            PC OR LAPTOP
             <span className="text-accent"> ISSUES</span>?
           </h1>
-          <p className="text-[5vw] md:w-3/4 md:text-4xl mb-8 col-span-3 text-text font-bold mt-6">
+          <p className="text-[5vw] md:w-3/4 md:text-2xl  mb-8 col-span-3 text-text font-bold mt-6">
             Book a technician now to get your computer problems solved!
           </p>
           <Link
             href="/services"
-            className="bg-accent text-white px-8 py-4 rounded-full text-2xl font-semibold block hover:bg-accent-light"
+            className="bg-accent text-white px-[5vw] py-[2vw]  md:px-8 md:py-4 rounded text-[6vw] md:text-2xl font-semibold block hover:bg-accent-light"
           >
             Book Now
           </Link>

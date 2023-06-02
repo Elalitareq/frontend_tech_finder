@@ -62,7 +62,7 @@ const Header = () => {
   const { data: session, status } = useSession();
   return (
     <header
-    className={`fixed z-10 w-full md:w-[calc(100%-8rem)] px-4  rounded-lg md:mx-16 md:px-4 py-6 md:py-2 md:top-4 flex justify-between transition-color duration-300 ${scrollPosition > 100 ? "bg-gray-900" : "bg-secondary-dark md:bg-transparent"}`}
+    className={`fixed z-10 w-full md:w-[calc(100%-8rem)] px-4 rounded md:rounded-lg md:mx-16 md:px-4 py-6 md:py-2 md:top-4 flex justify-between transition-color duration-300 ${scrollPosition > 100 ? "bg-gray-900" : "bg-secondary-dark md:bg-transparent"}`}
   >
   
       <Image
@@ -88,7 +88,7 @@ const Header = () => {
         >
           {linksArray.map((link) => {
             return (
-              <li key={link.href}>
+              <li key={link.href} className=" mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
                 <Link
                   className={`tracking-wild ${
                     checkActive(pathname, link.href)
@@ -105,7 +105,7 @@ const Header = () => {
           })}
 
           {status === "authenticated" && session.user.role === "admin" && (
-            <li>
+            <li className=" mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
               <Link
                 href={"/admin"}
                 className={`tracking-wild ${
@@ -118,7 +118,7 @@ const Header = () => {
             </li>
           )}
           {status === "authenticated" && session.user.role === "technician" && (
-            <li>
+            <li className=" mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
               <Link
                 href={"/technician"}
                 className={`tracking-wild ${

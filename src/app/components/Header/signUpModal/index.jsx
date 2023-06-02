@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SignUpStyle from "./SignUp.module.css";
+import { api } from "../../../lib/axios";
 
 const SignUpModal = () => {
   const [email, setEmail] = useState("");
+  const [dob, setDob] = useState("");
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
@@ -15,7 +17,7 @@ const SignUpModal = () => {
   const [confirmErrorMessage, setConfirmErrorMessage] = useState("");
 
   const [lastName, setLastName] = useState("");
-  const [role, setRole] = useState("customer"); // Default role is "customer"
+  const [role, setRole] = useState("user"); // Default role is "customer"
   const validatePassword = () => {
     const passwordRegex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
@@ -55,25 +57,26 @@ const SignUpModal = () => {
     if (!validatePassword()) {
       return;
     }
-    if(confirmErrorMessage||passwordErrorMessage||emailErrorMessage||firstNameErrorMessage||lastNameErrorMessage){
+    if (
+      confirmErrorMessage ||
+      passwordErrorMessage ||
+      emailErrorMessage ||
+      firstNameErrorMessage ||
+      lastNameErrorMessage
+    ) {
       return;
     }
     try {
-      const response = await axios.post(
-        `${process.env.EXPRESS_BACKEND_API_URL}/user/register`,
-        {
-          email,
-          password,
-          firstName,
-          lastName,
-          role,
-        },
-        { withCredentials: true }
-      );
+      const response = await api.post(`/user/register`, {
+        email,
+        password,
+        firstName,
+        lastName,
+        role,
+        dob,
+      });
 
       if (response.status === 201) {
-        
-
         handleCloseModal();
       } else {
         console.error(response.data);
@@ -82,13 +85,13 @@ const SignUpModal = () => {
       console.error(error);
     }
   };
-  const emptyErrors=()=>{
-    setConfirmErrorMessage("")
-    setPasswordErrorMessage("")
-    setEmailErrorMessage("")
-    setFirstNameErrorMessage("")
-    setLastNameErrorMessage("")
-  }
+  const emptyErrors = () => {
+    setConfirmErrorMessage("");
+    setPasswordErrorMessage("");
+    setEmailErrorMessage("");
+    setFirstNameErrorMessage("");
+    setLastNameErrorMessage("");
+  };
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -101,7 +104,7 @@ const SignUpModal = () => {
     return () => {
       window.removeEventListener("click", handleOutsideClick);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [showSignUpModal, setShowSignUpModal] = useState(false);
@@ -111,7 +114,7 @@ const SignUpModal = () => {
   };
 
   const handleCloseModal = () => {
-    emptyErrors()
+    emptyErrors();
     setShowSignUpModal(false);
   };
   const handleRoleChange = (e) => {
@@ -150,7 +153,7 @@ const SignUpModal = () => {
   return (
     <>
       <button
-        className={`${SignUpStyle.signUpNavButton} lg:text-2xl`}
+        className="bg-accent hover:bg-accent-light text-gray-100 px-4 py-2 rounded mr-3 text-xl transition-colors duration-300"
         onClick={handleSignUpClick}
       >
         Sign Up
@@ -205,6 +208,14 @@ const SignUpModal = () => {
                 )}
               </div>
               <div className={SignUpStyle.formControl}>
+                <label htmlFor="dob">Date Of Birth:</label>
+                <input
+                  type="date"
+                  name="dob"
+                  onChange={(e) => setDob(e.target.value)}
+                />
+              </div>
+              <div className={SignUpStyle.formControl}>
                 <label htmlFor="email">Email:</label>
                 <input
                   type="email"
@@ -223,8 +234,8 @@ const SignUpModal = () => {
                     <input
                       type="radio"
                       name="role"
-                      value="customer"
-                      checked={role === "customer"}
+                      value="user"
+                      checked={role === "user"}
                       onChange={handleRoleChange}
                     />
                     Customer

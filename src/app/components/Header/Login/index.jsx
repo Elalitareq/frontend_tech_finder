@@ -22,7 +22,7 @@ export const Login = () => {
     return (
       < >
           <button
-            className={`${loginStyle.loginButton} lg:text-2xl`}
+        className="  text-gray-100  hover:text-accent-light px-4 py-2 rounded mr-3 text-xl transition-colors duration-300"
             onClick={handleLoginModalOpen}
           >
             Login

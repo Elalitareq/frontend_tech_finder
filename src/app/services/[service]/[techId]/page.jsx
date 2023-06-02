@@ -103,7 +103,7 @@ const Technician = async ({ params }) => {
         ))}
       </div>
       <div className="p-4 text-right md:text-center">
-        <button className="text-gray-100 bg-primary px-4 py-3 rounded-full hover:bg-primary-light cursor-pointer">
+        <button className="text-gray-100 bg-primary px-4 py-3 rounded hover:bg-primary-light cursor-pointer">
           Book Now
         </button>
       </div>

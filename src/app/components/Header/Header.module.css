@@ -40,10 +40,7 @@
   height: 100%;
 }
 
-.menu li {
-  padding: 18px 10px;
-  font-size: 20px;
-}
+
 
 
 .menu li a {
@@ -98,7 +95,7 @@ position: relative;
   .menu {
     flex-direction: column;
     padding: 20px;
-    background: var(--secondary-color);
+    background: rgb(82, 82, 82);
     position: absolute;
     transform: translateX(-150%);
     /* opacity: 0; */
