@@ -2,6 +2,7 @@ import React from "react";
 import { api } from "../../../lib/axios";
 import Image from "next/image";
 import { socialArray } from "../../../components/technicianCard/socialIcons";
+import { FaMapMarkedAlt} from "react-icons/fa";
 const Technician = async ({ params }) => {
   const days = [
     "Monday",
@@ -30,10 +31,10 @@ const Technician = async ({ params }) => {
           <h2 className="text-2xl my-4 md:mt-0">{technician.title}</h2>
           <h4 className="text-lg my-4">Email: {technician.workEmail}</h4>
           <h4 className="text-lg my-4">Address: {technician.address}</h4>
-          <h4 className="text-lg my-4">
+          <h4 className="text-lg my-4 flex items-center">
             
             Location:
-            <a href={`https://www.google.com/maps/search/?api=1&query=${technician.location.lat},${technician.location.lat}`} target="_blank"className="text-primary cursor-pointer"> Map </a>
+            <a href={`https://www.google.com/maps/search/?api=1&query=${technician.location.lat},${technician.location.lat}`} target="_blank"className="text-gray-300 cursor-pointer hover:text-primary transition-color duration-300 "> <FaMapMarkedAlt className="ml-4 text-2xl"/> </a>
           </h4>
           <h4 className="text-lg my-4">Tel: {technician.tel}</h4>
           <div className="flex gap-8 items-center my-4">
@@ -43,7 +44,7 @@ const Technician = async ({ params }) => {
                 <a
                   href={platform.url}
                   key={platform._id}
-                  className="text-3xl text-text "
+                  className="text-3xl text-text hover:text-primary transition-color duration-300 "
                   target="_blank"
                 >
                   {socialArray[platform.platform.toLowerCase()]}
