@@ -51,20 +51,21 @@ const ReusableTable = ({ columns, data, handleSwitchChange, isLoading }) => {
 
 export default ReusableTable;
 
-const CustomSwitch=({checked,handleSwitchChange,id})=>{
-  const [sure,setSure]=useState(checked)
-  useEffect(()=>{
-    setSure(checked)
-  },[checked]
+const CustomSwitch = ({ checked, handleSwitchChange, id }) => {
+  const [sure, setSure] = useState(checked);
 
-  )
-  return(
-    <Switch
-   checked={sure}
-   onChange={(e,value) => {
-    setSure(value)
+  useEffect(() => {
+    setSure(checked);
+  }, [checked]);
+
+  useEffect(() => {
+    setSure(checked); // Update the switch state when the checked prop changes
+  }, [checked]);
+
+  const handleChange = (e, value) => {
+    setSure(value);
     handleSwitchChange(id, value);
-  }}
-  />
-  )
-}
+  };
+
+  return <Switch checked={sure} onChange={handleChange} />;
+};
