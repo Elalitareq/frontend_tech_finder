@@ -1,10 +1,8 @@
 import { Switch } from "@mui/material";
-import { useEffect ,useState} from "react";
+import { useEffect, useState } from "react";
 
 const ReusableTable = ({ columns, data, handleSwitchChange, isLoading }) => {
-  useEffect(()=>{
-
-  },[data])
+  useEffect(() => {}, [data]);
   return (
     <table className="w-full border-collapse bg-gray-500  table-auto overflow-scroll">
       <thead>
@@ -21,21 +19,25 @@ const ReusableTable = ({ columns, data, handleSwitchChange, isLoading }) => {
       </thead>
       <tbody className="max-h-[500px]">
         {isLoading ? (
-          <tr><td>Loading...</td></tr>
+          <tr>
+            <td>Loading...</td>
+          </tr>
         ) : (
           data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              className={rowIndex % 2 === 0 ? "bg-gray-500 text-text" : "  bg-gray-300"}
+              className={
+                rowIndex % 2 === 0 ? "bg-gray-500 text-text" : "  bg-gray-300"
+              }
             >
               {columns.map((column, columnIndex) => (
                 <td key={columnIndex} className="py-2 px-4 border-b">
                   {column.type === "boolean" ? (
-                   <CustomSwitch
-                   id={row._id}
-                   checked={row[column.accessor]}
-                   handleSwitchChange={handleSwitchChange}
-                   />
+                    <CustomSwitch
+                      id={row._id}
+                      checked={row[column.accessor]}
+                      handleSwitchChange={handleSwitchChange}
+                    />
                   ) : (
                     row[column.accessor]
                   )}

@@ -45,8 +45,8 @@ export default function Home() {
           alt="hero"
         />
       </div>
-        <h2 className="text-2xl text-text text-center my-12">Technicians that are close to you</h2>
-      <div className="flex flex-row mx-auto justify-between flex-wrap max-w-[1200px]">
+        <h2 className="text-2xl text-text text-center my-12">Technicians close to you</h2>
+      <div className="flex flex-row mx-auto justify-center md:justify-between flex-wrap max-w-[1200px]">
         {data &&
           data.technicians.map((technician, index) => {
             return (
