@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import headerStyle from "./Header.module.css";
 import logo2 from "../../assets/vector/logo2.svg";
 import Image from "next/image";
@@ -32,6 +32,19 @@ const linksArray = [
 ];
 
 const Header = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
   const pathname = usePathname();
   const checkActive = (pathname, href) => {
     let location = pathname.split("/")[1] || "";
@@ -48,7 +61,10 @@ const Header = () => {
   };
   const { data: session, status } = useSession();
   return (
-    <header className="fixed z-10 w-full   px-4 md:px-20 py-6 flex justify-between bg-secondary-dark md:bg-transparent">
+    <header
+    className={`fixed z-10 w-full md:w-[calc(100%-8rem)] px-4  rounded-lg md:mx-16 md:px-4 py-6 md:py-2 md:top-4 flex justify-between transition-color duration-300 ${scrollPosition > 100 ? "bg-gray-900" : "bg-secondary-dark md:bg-transparent"}`}
+  >
+  
       <Image
         loading="eager"
         priority={true}
@@ -73,7 +89,15 @@ const Header = () => {
           {linksArray.map((link) => {
             return (
               <li key={link.href}>
-                <Link className={`tracking-wild ${checkActive(pathname,link.href)?"text-primary":"text-text"}`} href={link.href} onClick={()=>setMenuOpen(false)}>
+                <Link
+                  className={`tracking-wild ${
+                    checkActive(pathname, link.href)
+                      ? "text-primary"
+                      : "text-text"
+                  }`}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {link.label}
                 </Link>
               </li>
@@ -82,14 +106,28 @@ const Header = () => {
 
           {status === "authenticated" && session.user.role === "admin" && (
             <li>
-              <Link href={"/admin"} className={`tracking-wild ${checkActive(pathname,"/admin")?"text-primary":"text-text"}`} onClick={()=>setMenuOpen(false)}>
+              <Link
+                href={"/admin"}
+                className={`tracking-wild ${
+                  checkActive(pathname, "/admin") ? "text-primary" : "text-text"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
                 Admin Panel
               </Link>
             </li>
           )}
           {status === "authenticated" && session.user.role === "technician" && (
             <li>
-              <Link href={"/technician"} className={`tracking-wild ${checkActive(pathname,"/technician")?"text-primary":"text-text"}`} onClick={()=>setMenuOpen(false)}>
+              <Link
+                href={"/technician"}
+                className={`tracking-wild ${
+                  checkActive(pathname, "/technician")
+                    ? "text-primary"
+                    : "text-text"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
                 Technician Panel
               </Link>
             </li>
