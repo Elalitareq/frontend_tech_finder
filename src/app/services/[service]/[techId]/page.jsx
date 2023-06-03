@@ -16,7 +16,7 @@ const Technician = async ({ params }) => {
   const technician = await getTechnicianData(params.techId);
   return (
     <div className="w-full md:w-[800px]  min-h-[700px] mx-auto ">
-      <h1 className="text-3xl text-gray-200 font-bold mb-6 pb-2 border-b-4 text-center border-gray-200">
+      <h1 className="text-3xl text-gray-200 font-bold mb-6 pb-5 border-b-4 text-center border-gray-200">
         {technician.companyName}
       </h1>
       <div className="flex p-4  flex-col md:flex-row md:justify-between">
