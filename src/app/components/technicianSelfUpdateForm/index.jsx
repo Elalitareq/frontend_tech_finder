@@ -7,6 +7,7 @@ import { api } from "../../lib/axios";
 const EditProfileModal = ({ data, onClose }) => {
   const [technicianUpdate, setTechnicianUpdate] = useState({ ...data });
   const [previewImage, setPreviewImage] = useState(null);
+  const [image,setImage]=useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,10 +19,7 @@ const EditProfileModal = ({ data, onClose }) => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setTechnicianUpdate((prevState) => ({
-      ...prevState,
-      image: file,
-    }));
+    setImage(file)
 
     // Preview the selected image
     const reader = new FileReader();
@@ -43,17 +41,23 @@ const EditProfileModal = ({ data, onClose }) => {
 
   const handleSubmit = () => {
     // Make API call to update technician details
-    api
-      .put("/technician/self", technicianUpdate)
-      .then((res) => {
-        // Handle successful update
-        console.log("Technician details updated:", res.data);
-        onClose();
-      })
-      .catch((err) => {
-        // Handle error
-        console.error("Error updating technician details:", err);
-      });
+    const formData=new FormData();
+    formData.append("image",image);
+    api.post("https://api.imgbb.com/1/upload?key=0e5bf6ce03a2da6af74680937a7b8683",formData).then(res=>{
+        let imageUrl = res.data.image.url
+
+        api
+          .put("/technician/self", {...technicianUpdate})
+          .then((res) => {
+            // Handle successful update
+            console.log("Technician details updated:", res.data);
+            onClose();
+          })
+          .catch((err) => {
+            // Handle error
+            console.error("Error updating technician details:", err);
+          });
+    })
   };
 
   return (
