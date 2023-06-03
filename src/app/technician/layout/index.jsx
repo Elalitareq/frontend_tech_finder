@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
         })}
         
       </nav>
-      <div className="p-8 ">{children}</div>
+      <div className="md:p-8 ">{children}</div>
     </>
   );
 };

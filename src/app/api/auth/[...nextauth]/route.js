@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 // import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../lib/mongodb";
+import { api } from "../../../lib/axios";
 
 const authOptions = {
   providers: [
@@ -28,8 +29,8 @@ const authOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const response = await axios.post(
-            `${process.env.EXPRESS_BACKEND_API_URL}/user/login`,
+          const response = await api.post(
+            '/user/login',
             { email: credentials.email, password: credentials.password },
             { withCredentials: true }
           );

@@ -119,7 +119,7 @@ const Header = () => {
             </li>
           )}
           {status === "authenticated" && session.user.role === "technician" && (
-            <li className=" mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
+            <li className="z-20 mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
               <Link
                 href={"/technician"}
                 className={`tracking-wild ${
