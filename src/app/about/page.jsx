@@ -17,7 +17,7 @@ const About = () => {
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6IzAwMDAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxOyIgLz4KPC9zdmc+Cg=="
           />
         </div>
-        <div className="w-[95%] lg:w-1/2 bg-gray-200 min-h-[600px] p-10 lg:p-16 rounded-xl overflow-hidden relative mb-12">
+        <div className="w-[95%] lg:w-1/2 bg-gray-300 min-h-[600px] p-10 lg:p-16 rounded-xl overflow-hidden relative mb-12">
 
       <h1 className="text-4xl mb-12 text-center font-bold text-gray-800">
         About Us
