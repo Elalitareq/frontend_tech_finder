@@ -40,7 +40,7 @@ const TechnicianCard = ({ data,service }) => {
         </Link>
 
         <Image src={data.image} className="Description" width="240"
-    height="180"/>
+    height="180" alt={data.title}/>
 
         <div className="social-media">
           {data.social.slice(0, 4).map((platform, i) => {

@@ -43,6 +43,7 @@ const authOptions = {
               role: user.role,
               accessToken: response.data.accessToken,
               refreshToken: response.data.refreshToken,
+              dob:user.dob
             }
           }
         } catch (e) {

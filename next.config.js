@@ -2,7 +2,8 @@
 const nextConfig = {
     images:{
         domains:[
-            "i.ibb.co"
+            "i.ibb.co",
+            "image.shutterstock.com"
         ]
     }
 }
