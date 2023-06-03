@@ -3,16 +3,22 @@ import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'
 import { api } from '../../lib/axios'
 import Image from "next/image"
-import { FaMapMarkedAlt } from 'react-icons/fa'
+import { FaEdit, FaMapMarkedAlt } from 'react-icons/fa'
 import { socialArray } from '../../components/technicianCard/socialIcons'
 import EditProfileModal from "../../components/technicianSelfUpdateForm"
+import { Toaster, toast } from 'react-hot-toast'
 
 const Profile = () => {
   const [data,setData]=useState()
   const [edit,setEdit]=useState(false)
   const [technicianUpdate,setTechnicianUpdate] = useState()
   const {data:session,status}=useSession()
-const handleClose=()=>{
+const handleClose=(success="")=>{
+  if(success==="success"){
+
+    toast.success("Profile updated successfully")
+  }
+
   setEdit(false)
 }
   if(status==="loading"){
@@ -34,7 +40,11 @@ if(status==="authenticated"){
   api.get("/technician/self",{headers:{Authorization:"Bearer "+session.user.accessToken}}).then(res=>setData(res.data.technician)).catch(err=>console.error(err))
   return (
     <>
-    {data&&<div className="w-full md:w-[800px]  min-h-[700px] mx-auto ">
+    {data&&<div className="w-full md:w-[800px]  min-h-[700px] mx-auto relative group ">
+    <FaEdit
+            className="text-3xl absolute top-1 right-1 text-gray-500 md:text-transparent  md:group-hover:text-gray-500 cursor-pointer hover:text-gray-100 transision-color duration-300"
+            onClick={() => setEdit(true)}
+          />
       <h1 className="text-3xl text-gray-200 font-bold mb-6 pb-5 border-b-4 text-center border-gray-200">
         {data.companyName}
       </h1>
@@ -121,13 +131,10 @@ if(status==="authenticated"){
           </div>
         ))}
       </div>
-      <div className="p-4 text-right md:text-center">
-        <button className="text-gray-100 bg-primary px-4 py-3 rounded hover:bg-primary-light cursor-pointer" onClick={()=>setEdit(true)}>
-         Edit
-        </button>
-      </div>
+  
       
-    {edit&&<EditProfileModal onClose={handleClose} data={data}/>}
+    {edit&&<EditProfileModal onClose={handleClose} data={data} accessToken={session.user.accessToken}/>}
+    <Toaster/>
     </div>}
 
     </>

@@ -21,8 +21,8 @@ const Layout = ({ children }) => {
     }
   };
   return (
-    <>
-      <nav className="w-full bg-gray-800 px-5 py-4 rounded-lg text-gray-800 flex flex-wrap gap-5 justify-center">
+    <div className="w-full flex flex-col md:flex-row h-full md:gap-16">
+      <nav className="w-full md:w-[200px] mb-4 md:h-[600px] bg-gray-800 px-5 py-4 rounded-lg text-gray-800 flex flex-row  flex-wrap md:flex-col gap-5 justify-between ">
         {links.map((link, index) => {
           return (
             <Link
@@ -40,8 +40,8 @@ const Layout = ({ children }) => {
         })}
         
       </nav>
-      <div className="md:p-8 ">{children}</div>
-    </>
+      <div className="mx-auto ">{children}</div>
+    </div>
   );
 };
 

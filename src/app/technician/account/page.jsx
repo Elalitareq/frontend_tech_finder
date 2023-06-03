@@ -34,9 +34,10 @@ const Account = () => {
   } else if (status === "authenticated") {
     return (
       <div className="text-gray-200 flex flex-col gap-4 max-w-[400px] relative group">
+        <h2 className="text-xl font-bold p-4 pb-2 mb-2 text-center border-b">User Account</h2>
         {!edit ? (
           <FaEdit
-            className="text-3xl absolute top-1 right-1 text-transparent group-hover:text-gray-500 cursor-pointer hover:text-gray-100 transision-color duration-300"
+            className="text-3xl absolute top-1 right-1 text-gray-500 md:text-transparent  md:group-hover:text-gray-500 cursor-pointer hover:text-gray-100 transision-color duration-300"
             onClick={() => setEdit(true)}
           />
         ) : (

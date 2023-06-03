@@ -3,8 +3,9 @@ import Image from "next/image";
 
 import React, { useState } from "react";
 import { api } from "../../lib/axios";
+import { toast } from "react-hot-toast";
 
-const EditProfileModal = ({ data, onClose }) => {
+const EditProfileModal = ({ data, onClose,accessToken }) => {
   const [technicianUpdate, setTechnicianUpdate] = useState({ ...data });
   const [previewImage, setPreviewImage] = useState(null);
   const [image,setImage]=useState(null);
@@ -41,23 +42,40 @@ const EditProfileModal = ({ data, onClose }) => {
 
   const handleSubmit = () => {
     // Make API call to update technician details
-    const formData=new FormData();
-    formData.append("image",image);
-    api.post("https://api.imgbb.com/1/upload?key=0e5bf6ce03a2da6af74680937a7b8683",formData).then(res=>{
-        let imageUrl = res.data.image.url
+    if(image){
 
-        api
-          .put("/technician/self", {...technicianUpdate})
-          .then((res) => {
-            // Handle successful update
-            console.log("Technician details updated:", res.data);
-            onClose();
-          })
-          .catch((err) => {
-            // Handle error
-            console.error("Error updating technician details:", err);
-          });
-    })
+        const formData=new FormData();
+        formData.append("image",image);
+        api.post("https://api.imgbb.com/1/upload?key=0e5bf6ce03a2da6af74680937a7b8683",formData).then(res=>{
+            let imageUrl = res.data.data.image.url
+    
+            api
+              .patch(`/technician/${data._id}`, {...technicianUpdate,image:imageUrl},{headers:{Authorization:"Bearer " + accessToken}})
+              .then((res) => {
+                // Handle successful update
+                onClose("success");
+              })
+              .catch((err) => {
+                // Handle error
+                console.error("Error updating technician details:", err);
+              });
+        })
+    }
+    else{
+
+            api
+              .patch(`/technician/${data._id}`,technicianUpdate,{headers:{Authorization:"Bearer " + accessToken}})
+              .then((res) => {
+                // Handle successful update
+                console.log("Technician details updated:", res.data);
+                onClose("success");
+              })
+              .catch((err) => {
+                // Handle error
+                console.error("Error updating technician details:", err);
+              });
+
+    }
   };
 
   return (
@@ -81,7 +99,7 @@ const EditProfileModal = ({ data, onClose }) => {
             <input
               type="text"
               name="companyName"
-              value={technicianUpdate.companyName}
+              defaultValue={data.companyName}
               onChange={handleInputChange}
               className="border border-gray-300 px-2 py-1 rounded w-full"
             />
@@ -91,7 +109,7 @@ const EditProfileModal = ({ data, onClose }) => {
             <input
               type="text"
               name="title"
-              value={technicianUpdate.title}
+              defaultValue={data.title}
               onChange={handleInputChange}
               className="border border-gray-300 px-2 py-1 rounded w-full"
             />
@@ -102,7 +120,7 @@ const EditProfileModal = ({ data, onClose }) => {
             <input
               type="text"
               name="workEmail"
-              value={technicianUpdate.workEmail}
+              defaultValue={data.workEmail}
               onChange={handleInputChange}
               className="border border-gray-300 px-2 py-1 rounded w-full"
             />
@@ -113,7 +131,7 @@ const EditProfileModal = ({ data, onClose }) => {
             <input
               type="text"
               name="address"
-              value={technicianUpdate.address}
+              defaultValue={data.address}
               onChange={handleInputChange}
               className="border border-gray-300 px-2 py-1 rounded w-full"
             />
@@ -124,7 +142,7 @@ const EditProfileModal = ({ data, onClose }) => {
             <input
               type="text"
               name="website"
-              value={technicianUpdate.website}
+              defaultValue={data.website}
               onChange={handleInputChange}
               className="border border-gray-300 px-2 py-1 rounded w-full"
             />
@@ -134,7 +152,7 @@ const EditProfileModal = ({ data, onClose }) => {
             <input
               type="text"
               name="tel"
-              value={technicianUpdate.tel}
+              defaultValue={data.tel}
               onChange={handleInputChange}
               className="border border-gray-300 px-2 py-1 rounded w-full"
             />
@@ -166,13 +184,13 @@ const EditProfileModal = ({ data, onClose }) => {
           <legend className="text-lg font-bold mb-2">
             Social Media Accounts:
           </legend>
-          {technicianUpdate.social.map((platform) => (
+          {data.social.map((platform) => (
             <label key={platform.platform} className="block mb-2">
               {platform.platform} URL:
               <input
                 type="text"
                 name={platform.platform}
-                value={platform.url}
+                defaultValue={platform.url}
                 onChange={(e) => handleSocialInputChange(e, platform.platform)}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               />
