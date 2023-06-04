@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TicketModal = ({ ticket, onClose }) => {
+const TicketModal = ({ ticket, onClose,updateStatus }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg">
@@ -43,7 +43,7 @@ const TicketModal = ({ ticket, onClose }) => {
         </p>
 
         <p>
-          <span className="font-semibold">Status:</span> {ticket.status}
+          <span className="font-semibold">Status:</span> {ticket.status} <button className="text-sm text-blue-300 hover:text-blue-500 transition-colors duration-300" onClick={updateStatus}> Update status</button>
         </p>
 
         <button
