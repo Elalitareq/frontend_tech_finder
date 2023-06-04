@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   };
   return (
     <div className="w-full flex flex-col md:flex-row h-full md:gap-16">
-      <nav className="w-full md:w-[200px] mb-4 md:h-[600px] bg-gray-800 px-5 py-4 rounded-lg text-gray-800 flex flex-row  flex-wrap md:flex-col gap-5 justify-between ">
+      <nav className="w-full md:w-[250px] mb-4 md:mb-0 md:h-[700px] bg-gray-800 px-5 py-4 rounded-lg text-gray-800 flex flex-row  flex-wrap md:flex-col gap-5 justify-between md:justify-normal">
         {links.map((link, index) => {
           return (
             <Link
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
         })}
         
       </nav>
-      <div className="mx-auto ">{children}</div>
+      <div className="w-full bg-gray-800 text-gray-100 rounded-lg  p-8 ">{children}</div>
     </div>
   );
 };

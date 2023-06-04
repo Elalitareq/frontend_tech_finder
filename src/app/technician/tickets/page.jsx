@@ -16,7 +16,7 @@ const Tickets = () => {
   const updateStatus = (value) => {
     // Handle status update here
     api
-      .put(`/tickets/${selectedTicket._id}`, { status: value })
+      .put(`/tickets/${selectedTicket._id}`, { status: value },{headers:{Authorization: 'Bearer ' + session.user.accessToken}})
       .then((res) => {
         toast.success(`Stutus updated to ${value}`);
       })
@@ -25,6 +25,7 @@ const Tickets = () => {
       })
       .finally(() => {
         setOpenUpdateStatus(false);
+        setFirstLoad(true)
       });
   };
 
@@ -56,7 +57,7 @@ const Tickets = () => {
 
     return (
       <>
-        <h2 className="text-2xl mb-4">My Tickets</h2>
+        <h2 className="text-2xl mb-4 font-semibold">My Tickets</h2>
         <div className="flex flex-wrap gap-10">
           {tickets.map((ticket) => (
             <TicketCard
@@ -87,13 +88,13 @@ const Tickets = () => {
                   Open
                 </button>
                 <button
-                  onClick={(e) => updateStatus("proccessing")}
+                  onClick={(e) => updateStatus("processing")}
                   className="bg-primary text-white px-4 py-2 rounded"
                 >
                   Processing
                 </button>
                 <button
-                  onClick={(e) => updateStatus("resovled")}
+                  onClick={(e) => updateStatus("resolved")}
                   className="bg-primary text-white px-4 py-2 rounded"
                 >
                   Resolved

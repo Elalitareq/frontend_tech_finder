@@ -34,7 +34,7 @@ const Account = () => {
   } else if (status === "authenticated") {
     return (
       <div className="text-gray-200 flex flex-col gap-4 max-w-[400px] relative group">
-        <h2 className="text-xl font-bold p-4 pb-2 mb-2 text-center border-b">User Account</h2>
+        <h2 className="text-2xl font-semibold  pb-2 mb-2 ">User Account</h2>
         {!edit ? (
           <FaEdit
             className="text-3xl absolute top-1 right-1 text-gray-500 md:text-transparent  md:group-hover:text-gray-500 cursor-pointer hover:text-gray-100 transision-color duration-300"
@@ -58,7 +58,7 @@ const Account = () => {
                 firstName: e.target.value,
               }))
             }
-            className={`px-2 py-1 text-gray-900 ${
+            className={`px-2 py-1 text-gray-300 ${
               edit ? "bg-gray-300" : "bg-transparent"
             }`}
             readOnly={!edit}
@@ -76,7 +76,7 @@ const Account = () => {
                 lastName: e.target.value,
               }))
             }
-            className={`px-2 py-1 text-gray-900 ${
+            className={`px-2 py-1 text-gray-300 ${
               edit ? "bg-gray-300" : "bg-transparent"
             }`}
             readOnly={!edit}
@@ -94,7 +94,7 @@ const Account = () => {
                 email: e.target.value,
               }))
             }
-            className={`px-2 py-1 text-gray-900 ${
+            className={`px-2 py-1 text-gray-300 ${
               edit ? "bg-gray-300" : "bg-transparent"
             }`}
             readOnly={!edit}
@@ -112,7 +112,7 @@ const Account = () => {
                 dob: e.target.value,
               }))
             }
-            className={`px-2 py-1 text-gray-900 ${
+            className={`px-2 py-1 text-gray-300 ${
               edit ? "bg-gray-300" : "bg-transparent"
             }`}
             readOnly={!edit}
