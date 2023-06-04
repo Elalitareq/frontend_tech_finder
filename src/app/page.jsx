@@ -45,18 +45,22 @@ export default function Home() {
           alt="hero"
         />
       </div>
-        <h2 className="text-2xl text-text text-center my-12">Technicians close to you</h2>
-      <div className="flex flex-row mx-auto justify-center md:justify-between flex-wrap max-w-[1200px]">
-        {data &&
-          data.technicians.map((technician, index) => {
-            return (
-              <TechnicianCard
-                data={technician}
-                key={index}
-                className="w-full md:w-1/3"
-              />
-            );
-          })}
+      <div className="md:px-20 py-5 mx-auto  bg-gray-800  max-w-[1300px] rounded-xl mt-8">
+        <h2 className="text-2xl text-text  font-bold text-center mt-8 mb-12">
+          Technicians close to you
+        </h2>
+        <div className="flex flex-row mx-auto justify-center md:justify-between  sm:justify-around flex-wrap">
+          {data &&
+            data.technicians.map((technician, index) => {
+              return (
+                <TechnicianCard
+                  data={technician}
+                  key={index}
+                  className="w-full md:w-1/3"
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
   );
