@@ -2,7 +2,7 @@ import React from 'react';
 
 const TicketModal = ({ ticket, onClose,updateStatus }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-gray-800">
       <div className="bg-white p-6 rounded-lg">
         <h2 className="text-2xl mb-4">Ticket Details</h2>
 
@@ -11,15 +11,15 @@ const TicketModal = ({ ticket, onClose,updateStatus }) => {
         </p>
 
         <p>
-          <span className="font-semibold">User Name:</span> {ticket.user.name}
+          <span className="font-semibold">Name:</span> {ticket.user.name}
         </p>
 
         <p>
-          <span className="font-semibold">User Email:</span> {ticket.user.email}
+          <span className="font-semibold">Email:</span> {ticket.user.email}
         </p>
 
         <p>
-          <span className="font-semibold">User Phone Number:</span>{' '}
+          <span className="font-semibold">Phone Number:</span>{' '}
           {ticket.user.phoneNumber}
         </p>
 

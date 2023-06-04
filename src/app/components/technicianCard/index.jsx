@@ -7,7 +7,7 @@ import Image from "next/image";
 const TechnicianCard = ({ data,service }) => {
   return (
     <>
-      <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400">
+      <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400 ">
         <Link href={`/services/${service}/${data._id}`} className="hover:cursor-pointer">
           <div className="h-[70px] bg-gray-700 flex items-center justify-around hover:bg-gray-300 transition-colors hover:transition-colors duration-300 group">
             <div className="Usericon rounded-md  bg-dark-grey overflow-hidden">

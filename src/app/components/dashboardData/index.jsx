@@ -13,6 +13,7 @@ const Dashboard = ({ accessToken }) => {
         headers: { Authorization: "Bearer " + accessToken },
       })
       .then((res) => {
+        console.log(res)
         setData(res.data);
         setFirstLoad(false);
       });
@@ -44,7 +45,7 @@ const Dashboard = ({ accessToken }) => {
   
         <div className="mt-8">
           <h2 className="text-lg font-semibold mb-4">Recently Posted Tickets</h2>
-          <div className="bg-gray-200 rounded shadow p-4">
+          <div className="bg-gray-200 rounded shadow p-4 flex flex-wrap gap-4">
             {data.recentlyPostedTickets?.map((ticket) => (
                <TicketCard
                key={ticket._id}

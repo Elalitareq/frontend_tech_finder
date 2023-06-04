@@ -42,7 +42,7 @@ const CreateTicketModal = ({ technician }) => {
       })
       .catch((err) => {
         // Handle error
-        console.error('Error creating ticket:', err);
+        toast.error("Please Fill all the fields")
       });
   };
 
