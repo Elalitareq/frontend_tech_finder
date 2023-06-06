@@ -1,22 +1,23 @@
-'use client'
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { api } from "../../lib/axios";
+import { Toaster, toast } from "react-hot-toast";
 
-const AddProductModal = () => {
+const AddProductModal = ({ accessToken }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [image,setImage]=useState(null);
+  const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setImage(file)
+    setImage(file);
 
     // Preview the selected image
     const reader = new FileReader();
@@ -25,12 +26,41 @@ const AddProductModal = () => {
     };
     reader.readAsDataURL(file);
   };
-const onClose=()=>{
+  const onClose = () => {
     setIsOpen(false);
-}
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // posting product function
+    const formData = new FormData();
+    formData.append("image", image);
+    api
+      .post(
+        "https://api.imgbb.com/1/upload?key=0e5bf6ce03a2da6af74680937a7b8683",
+        formData
+      )
+      .then((res) => {
+        api
+          .post("/product", {
+            name,
+            description,
+            price,
+            brand,
+            category,
+            image: res.data.data.url,
+          },{headers:{Authorization:"Bearer "+ accessToken}})
+          .then((res) => {
+            toast.success("Product created");
+          })
+          .catch((err) => {
+            toast.error("something went wrong");
+            console.log(err)
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     // onSubmit({ name, description, price, brand, category });
     //
     setName("");
@@ -43,11 +73,14 @@ const onClose=()=>{
 
   return (
     <>
-      <button className="font-bold text-2xl" onClick={()=>setIsOpen(true)}>
+      <Toaster />
+      <button className="font-bold text-2xl" onClick={() => setIsOpen(true)}>
         <FaPlus />
       </button>
       {isOpen && (
-        <div className={`fixed inset-0 flex items-center justify-center z-50 text-gray-700 `}>
+        <div
+          className={`fixed inset-0 flex items-center justify-center z-50 text-gray-700 `}
+        >
           <div className="fixed inset-0 bg-gray-900 bg-opacity-75"></div>
           <div className="bg-white rounded-lg p-8 shadow-lg z-10 ">
             <h2 className="text-xl font-bold mb-4">Add Product</h2>
@@ -65,25 +98,25 @@ const onClose=()=>{
                 />
               </div>
               <legend>Image:</legend>
-          <div className="mb-4 md:h-[230px] md:w-[250px]">
-            {previewImage && (
-              <Image
-                width="300"
-                height="300"
-                src={previewImage}
-                alt="Preview"
-                className="mb-2 rounded w-40 h-40 object-cover"
-              />
-            )}
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="border border-gray-300 px-2 py-1 rounded w-full"
-            />
-          </div>
+              <div className="mb-4 md:h-[230px] md:w-[250px]">
+                {previewImage && (
+                  <Image
+                    width="300"
+                    height="300"
+                    src={previewImage}
+                    alt="Preview"
+                    className="mb-2 rounded w-40 h-40 object-cover"
+                  />
+                )}
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="border border-gray-300 px-2 py-1 rounded w-full"
+                />
+              </div>
               <div className="mb-4">
                 <label htmlFor="description" className="block font-medium mb-1">
                   Description

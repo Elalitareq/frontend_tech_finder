@@ -32,7 +32,7 @@ export default function TechnicianComponent() {
         Technicians close to you
       </h2>
       <div className="flex flex-row mx-auto justify-center md:justify-between sm:justify-around flex-wrap">
-        {data &&
+        {data ?
           data.technicians.map((technician, index) => {
             return (
               <TechnicianCard
@@ -41,7 +41,13 @@ export default function TechnicianComponent() {
                 className="w-full md:w-1/3"
               />
             );
-          })}
+          }):<>
+      <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400 "></div>
+      <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400 "></div>
+      <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400 "></div>
+      <div className="w-[250px] h-[300px] bg-gray-600 shadow-gray-500 shadow-md mb-12 rounded-md overflow-hidden hover:-translate-y-2 transition-transform duration-400 "></div>
+          </>
+    }
       </div>
     </div>
   );

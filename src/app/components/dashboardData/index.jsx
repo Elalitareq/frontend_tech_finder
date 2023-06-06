@@ -1,13 +1,17 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "../../lib/axios";
 import TicketCard from "../ticketCard";
+import TechnicianProfileCreate from "../technicianProfileCreate"
 
 const Dashboard = ({ accessToken }) => {
   const [data, setData] = useState(null);
+
+  const [openCreate, setOpenCreate] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
-  firstLoad &&
+  const [error, setError] = useState("");
+  useEffect(()=>{
     api
       .get("/dashboard", {
         headers: { Authorization: "Bearer " + accessToken },
@@ -15,11 +19,22 @@ const Dashboard = ({ accessToken }) => {
       .then((res) => {
         console.log(res)
         setData(res.data);
-        setFirstLoad(false);
+      }).catch((err) => {
+        setError("Not a technician")
       });
 
+  },[accessToken])
+
       console.log(data)
-  
+      if(error){
+        return (
+                  <div className="w-full text-center">
+                    <h1>Create  My Technician Profile</h1>
+                    <button className="px-4 py-2 bg-primary rounder mt-4" onClick={()=>setOpenCreate(true)}>Create</button>
+                    {openCreate&&<TechnicianProfileCreate accessToken={accessToken} onClose={()=>setOpenCreate(false)}/>}
+                  </div>
+                )
+      }
     return (
         <>
         {data&&

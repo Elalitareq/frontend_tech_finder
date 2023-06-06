@@ -79,7 +79,7 @@ const EditProfileModal = ({ data, onClose,accessToken }) => {
   };
 
   return (
-    <div className="fixed inset-0  z-50 flex items-center justify-center bg-black bg-opacity-50 pt-40 md:pt-10 overflow-y-scroll min-h-screen">
+    <div className="fixed inset-0  z-50 flex items-center justify-center bg-black bg-opacity-50 pt-40 md:pt-10 overflow-y-scroll min-h-screen text-black">
       <div className="bg-white p-6 rounded-lg z-50 relative w-full md:w-3/4">
         <span
           className="absolute top-6 right-3 text-gray-600 px-2 bg-red-300 hover:bg-red-500 hover:text-gray-800 rounded-full cursor-pointer transision-color duration-300"

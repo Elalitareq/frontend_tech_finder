@@ -64,7 +64,7 @@ const Header = () => {
     <header
     className={`fixed z-10 w-full md:w-[calc(100%-8rem)] px-4 rounded md:rounded-lg md:mx-16 md:px-4 py-6 md:py-2 md:top-4 flex justify-between `}
   >
-  <div className={` transition duration-500 absolute inset-0 h-full w-full bg-gradient-to-r from-gray-800 to-gray-700 z-10  ${scrollPosition > 100 ? "opacity-100" : "opacity-0"}`}></div>
+  <div className={` transition duration-500 absolute inset-0 h-full w-full bg-gradient-to-r from-gray-800 to-gray-700 z-10  ${scrollPosition > 100 ? "opacity-100 " : "opacity-0"}`}></div>
       <Image
         loading="eager"
         priority={true}
