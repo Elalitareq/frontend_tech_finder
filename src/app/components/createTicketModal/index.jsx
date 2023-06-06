@@ -5,46 +5,60 @@ import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 
 const CreateTicketModal = ({ technician }) => {
-  const {data:session ,status}=useSession()
+  const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+  });
+  const [problem, setProblem] = useState({
+    category: '',
+    description: '',
+    additionalDetails: '',
+  });
   const [ticketData, setTicketData] = useState({
     technician: technician,
-    user: {
-      name:"",
-      email: "",
-      phoneNumber: '',
-    },
+    user: user,
     serviceType: '',
-    problem: {
-      category: '',
-      description: '',
-      additionalDetails: '',
-    },
+    problem: problem,
+    userId: '',
   });
 
-  const categories = ['Pc Parts', 'OS','Hardware', 'Software', 'Other'];
-useEffect(()=>{
-  if(status==="authenticated"){
-    setTicketData({
-      technician: technician,
-      user: {
-        name:session.user.name,
+  const categories = ['Pc Parts', 'OS', 'Hardware', 'Software', 'Other'];
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setUser({
+        name: session.user.name,
         email: session.user.email,
         phoneNumber: '',
-      },
-      serviceType: '',
-      problem: {
-        category: '',
-        description: '',
-        additionalDetails: '',
-      },
-      userID: session.user._id
-    })
-  }
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[status])
+      });
+      setTicketData((prevState) => ({
+        ...prevState,
+        user: {
+          name: session.user.name,
+          email: session.user.email,
+          phoneNumber: '',
+        },
+        userId: session.user.id,
+      }));
+    }
+  }, [status]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if (name.includes('user.')) {
+      setUser((prevState) => ({
+        ...prevState,
+        [name.split('.')[1]]: value,
+      }));
+    } else if (name.includes('problem.')) {
+      setProblem((prevState) => ({
+        ...prevState,
+        [name.split('.')[1]]: value,
+      }));
+    }
     setTicketData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -58,11 +72,12 @@ useEffect(()=>{
       .then((res) => {
         // Handle successful ticket creation
         setOpen(false);
-        toast.success('Ticket created successfully, the technician will get back to you soon!');
+        toast.success('Ticket created successfully. The technician will get back to you soon!');
       })
       .catch((err) => {
         // Handle error
-        toast.error("Please Fill all the fields")
+        console.log(err);
+        toast.error('Please fill all the fields.');
       });
   };
 
@@ -82,18 +97,18 @@ useEffect(()=>{
               <input
                 type="text"
                 name="user.name"
-                value={ticketData.user.name}
+                value={user.name}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
-                />
+              />
             </label>
 
             <label className="block mb-4">
               Email:
               <input
                 type="text"
-                value={ticketData.user.email}
                 name="user.email"
+                value={user.email}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               />
@@ -104,6 +119,7 @@ useEffect(()=>{
               <input
                 type="text"
                 name="user.phoneNumber"
+                value={user.phoneNumber}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               />
@@ -114,6 +130,7 @@ useEffect(()=>{
               <input
                 type="text"
                 name="serviceType"
+                value={ticketData.serviceType}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               />
@@ -123,6 +140,7 @@ useEffect(()=>{
               Problem Category:
               <select
                 name="problem.category"
+                value={problem.category}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               >
@@ -139,6 +157,7 @@ useEffect(()=>{
               Problem Description:
               <textarea
                 name="problem.description"
+                value={problem.description}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               ></textarea>
@@ -148,6 +167,7 @@ useEffect(()=>{
               Additional Details:
               <textarea
                 name="problem.additionalDetails"
+                value={problem.additionalDetails}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
               ></textarea>

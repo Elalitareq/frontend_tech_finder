@@ -104,7 +104,19 @@ const Header = () => {
               </li>
             );
           })}
-
+      {status==="authenticated" &&<li className="z-20 mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
+              <Link
+                href={"/tickets"}
+                className={`tracking-wild ${
+                  checkActive(pathname, "/tickets")
+                    ? "text-primary"
+                    : "text-text"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                Tickets
+              </Link>
+            </li>}
           {status === "authenticated" && session.user.role === "admin" && (
             <li className=" mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
               <Link
@@ -118,6 +130,7 @@ const Header = () => {
               </Link>
             </li>
           )}
+    
           {status === "authenticated" && session.user.role === "technician" && (
             <li className="z-20 mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
               <Link

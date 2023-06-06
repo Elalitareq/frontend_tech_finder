@@ -96,7 +96,7 @@ const Profile = () => {
                     );
                   })}
                 </div>
-              </div>
+              </div>  
             </div>
             <h4 className="text-lg my-1 p-4 text-gray-300">Working Hours:</h4>
             <div className="flex flex-row flex-wrap justify-start px-4">

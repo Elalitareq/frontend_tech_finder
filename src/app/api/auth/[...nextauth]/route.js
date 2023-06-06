@@ -38,7 +38,7 @@ const authOptions = {
 
           if (user) {
             return {
-              id: +user._id,
+              id: user._id,
               name: `${user.firstName} ${user.lastName}`,
               email: user.email,
               role: user.role,
