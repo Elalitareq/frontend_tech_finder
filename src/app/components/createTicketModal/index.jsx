@@ -25,7 +25,6 @@ const CreateTicketModal = ({ technician }) => {
   const categories = ['Pc Parts', 'OS','Hardware', 'Software', 'Other'];
 useEffect(()=>{
   if(status==="authenticated"){
-    console.log("test")
     setTicketData({
       technician: technician,
       user: {
@@ -58,7 +57,6 @@ useEffect(()=>{
       .post('/tickets', ticketData)
       .then((res) => {
         // Handle successful ticket creation
-        console.log('Ticket created:', res.data);
         setOpen(false);
         toast.success('Ticket created successfully, the technician will get back to you soon!');
       })
