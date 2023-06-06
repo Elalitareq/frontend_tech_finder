@@ -27,10 +27,10 @@ export const Login = () => {
           >
             Login
           </button>
-        <LoginModal
+        {showLoginModal&&<LoginModal
           showLoginModal={showLoginModal}
           handleCloseModal={handleCloseModal}
-        />
+        />}
       </ >
     );
   } else if (status === "authenticated") {

@@ -105,7 +105,9 @@ const Header = () => {
             );
           })}
           <li className="block md:hidden ">
-            <Link className="bg-accent px-4 py-2"  href="/login">
+            <Link className="bg-accent px-4 py-3 text-white"  href="/login"
+                onClick={() => setMenuOpen(false)}
+                >
             Login
             </Link>
           </li>

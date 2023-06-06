@@ -11,7 +11,7 @@ const products=[
 ]
 const ProductCardListing = () => {
   return (
-    <div className='flex w-full gap-6 justify-between flex-wrap'>
+    <div className='flex w-full justify-center gap-6 md:justify-between flex-wrap'>
     {products.map((product,index) => (
 
     <ProductCard product={product} key={index}/>
