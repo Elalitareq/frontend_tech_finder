@@ -17,7 +17,6 @@ const Dashboard = ({ accessToken }) => {
         headers: { Authorization: "Bearer " + accessToken },
       })
       .then((res) => {
-        console.log(res)
         setData(res.data);
       }).catch((err) => {
         setError("Not a technician")

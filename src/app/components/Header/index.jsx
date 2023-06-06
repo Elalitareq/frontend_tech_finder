@@ -104,6 +104,11 @@ const Header = () => {
               </li>
             );
           })}
+          <li className="block md:hidden ">
+            <Link className="bg-accent px-4 py-2"  href="/login">
+            Login
+            </Link>
+          </li>
       {status==="authenticated" &&<li className="z-20 mb-3 md:mb-0 px-3 py-5 text-sm xl:text-lg ">
               <Link
                 href={"/tickets"}

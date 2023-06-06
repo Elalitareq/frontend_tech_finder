@@ -54,11 +54,9 @@ const AddProductModal = ({ accessToken }) => {
           })
           .catch((err) => {
             toast.error("something went wrong");
-            console.log(err)
           });
       })
       .catch((err) => {
-        console.log(err);
       });
 
     // onSubmit({ name, description, price, brand, category });

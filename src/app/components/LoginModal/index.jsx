@@ -85,7 +85,7 @@ const LoginModal = ({ showLoginModal, handleCloseModal }) => {
   }, [showLoginModal]);
   return (
     <>
-      {showLoginModal && (
+      
         <div className={loginModalStyle.modal}>
           <LoginModalForm
             handleLogin={handleLogin}
@@ -93,7 +93,7 @@ const LoginModal = ({ showLoginModal, handleCloseModal }) => {
           ></LoginModalForm>
           <Toaster/>
         </div>
-      )}
+      
     </>
   );
 };
