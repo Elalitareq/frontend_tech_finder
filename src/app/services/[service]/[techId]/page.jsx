@@ -4,7 +4,9 @@ import Image from "next/image";
 import { socialArray } from "../../../components/technicianCard/socialIcons";
 import { FaMapMarkedAlt} from "react-icons/fa";
 import CreateTicketModal from "../../../components/createTicketModal"
+import {getSession} from "next-auth/react"
 const Technician = async ({ params }) => {
+
   const days = [
     "Monday",
     "Tuesday",

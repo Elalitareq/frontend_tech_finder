@@ -1,15 +1,17 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api } from '../../lib/axios';
 import { Toaster, toast } from 'react-hot-toast';
+import { useSession } from 'next-auth/react';
 
 const CreateTicketModal = ({ technician }) => {
+  const {data:session ,status}=useSession()
   const [open, setOpen] = useState(false);
   const [ticketData, setTicketData] = useState({
     technician: technician,
     user: {
-      name: '',
-      email: '',
+      name:"",
+      email: "",
       phoneNumber: '',
     },
     serviceType: '',
@@ -21,7 +23,27 @@ const CreateTicketModal = ({ technician }) => {
   });
 
   const categories = ['Pc Parts', 'OS','Hardware', 'Software', 'Other'];
-
+useEffect(()=>{
+  if(status==="authenticated"){
+    console.log("test")
+    setTicketData({
+      technician: technician,
+      user: {
+        name:session.user.name,
+        email: session.user.email,
+        phoneNumber: '',
+      },
+      serviceType: '',
+      problem: {
+        category: '',
+        description: '',
+        additionalDetails: '',
+      },
+      userID: session.user._id
+    })
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[status])
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTicketData((prevState) => ({
@@ -62,15 +84,17 @@ const CreateTicketModal = ({ technician }) => {
               <input
                 type="text"
                 name="user.name"
+                value={ticketData.user.name}
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
-              />
+                />
             </label>
 
             <label className="block mb-4">
               Email:
               <input
                 type="text"
+                value={ticketData.user.email}
                 name="user.email"
                 onChange={handleInputChange}
                 className="border border-gray-300 px-2 py-1 rounded w-full"
