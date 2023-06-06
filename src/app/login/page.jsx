@@ -24,7 +24,6 @@ const Page = () => {
         //  toast.error("Wrong Credentials")
        }else{
         router.push("/")
-        handleCloseModal()
        }
     })
     } 
